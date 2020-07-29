@@ -1657,7 +1657,7 @@ local GetProperties; GetProperties = function(ClassName, Override) --// Recursiv
 				for Index, Property in pairs(Props) do
 					if Index ~= "Inherits" then
 						if Override ~= nil then
-							if Property == Override then
+							if Property == Override[Property] then
 								List[Property] = Property
 							end
 						else
@@ -1670,7 +1670,7 @@ local GetProperties; GetProperties = function(ClassName, Override) --// Recursiv
 			for Index, Property in pairs(NewClass) do
 				if Index ~= "Inherits" then
 					if Override ~= nil then
-						if Property == Override then
+						if Property == Override[Property] then
 							List[Property] = Property
 						end
 					else
@@ -1683,7 +1683,7 @@ local GetProperties; GetProperties = function(ClassName, Override) --// Recursiv
 		for Index, Property in pairs(Class) do
 			if Index ~= "Inherits" then
 				if Override ~= nil then
-					if Property == Override then
+					if Property == Override[Property] then
 						List[Property] = Property
 					end
 				else
@@ -1702,11 +1702,11 @@ local GetProperties; GetProperties = function(ClassName, Override) --// Recursiv
 			for Index, Property in pairs(Props) do
 				if Index ~= "Inherits" then
 					if Override ~= nil then
-						if Property == Override then
-							List[Property] = Property
+						if Property == Override[Property] then
+							Properties[Property] = Property
 						end
 					else
-						List[Property] = Property
+						Properties[Property] = Property
 					end
 				end
 			end
@@ -1715,11 +1715,11 @@ local GetProperties; GetProperties = function(ClassName, Override) --// Recursiv
 		for Index, Property in pairs(Class) do
 			if Index ~= "Inherits" then
 				if Override ~= nil then
-					if Property == Override then
-						List[Property] = Property
+					if Property == Override[Property] then
+						Properties[Property] = Property
 					end
 				else
-					List[Property] = Property
+					Properties[Property] = Property
 				end
 			end
 		end
