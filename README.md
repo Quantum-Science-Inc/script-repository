@@ -31,5 +31,3 @@ BindableEvent.Parent = game:GetService("ServerStorage")
 
 --// To reset the script upon regen call this and MAKE SURE TO CALL IT AS A FUNCTION
 RESETSCRIPTENV()
-
-return "Why did you require this bruh"
