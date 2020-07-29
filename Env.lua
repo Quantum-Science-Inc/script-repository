@@ -46,6 +46,7 @@ local Env = {
 	Region3 = Region3, CFrame = CFrame, Ray = Ray, Random = Random, spawn = spawn
 }; 
 
+--// Return
 return function(Table)
 	local OrgEnv = getfenv(2)
 	local Reset = CT(Table)
