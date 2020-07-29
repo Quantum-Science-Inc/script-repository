@@ -3,7 +3,7 @@ Main LUA Script Repository for QS
 
 # Env.lua
 EXAMPLE SCRIPT
-
+```lua
 --// Establish your variable table
 local Env = {
 	Debounce = false;
@@ -31,5 +31,9 @@ BindableEvent.Parent = game:GetService("ServerStorage")
 
 --// To reset the script upon regen call this and MAKE SURE TO CALL IT AS A FUNCTION
 RESETSCRIPTENV()
+<<<<<<< HEAD
 
 #YEET
+=======
+```
+>>>>>>> 07e547c750e5bb4d64e226d9d3d6ea44bf9b2a89
