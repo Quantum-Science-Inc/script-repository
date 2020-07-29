@@ -1640,7 +1640,7 @@ local Classes = {
 	};
 }
 
-local GetProperties; GetProperties = function(ClassName) --// Recursively Sets all the inherited properties
+local GetProperties; GetProperties = function(ClassName, Override) --// Recursively Sets all the inherited properties
 	local Class = Classes[ClassName]
 	local Properties = {}
 
@@ -1656,21 +1656,39 @@ local GetProperties; GetProperties = function(ClassName) --// Recursively Sets a
 
 				for Index, Property in pairs(Props) do
 					if Index ~= "Inherits" then
-						List[Property] = Property
+						if Override ~= nil then
+							if Property == Override then
+								List[Property] = Property
+							end
+						else
+							List[Property] = Property
+						end
 					end
 				end
 			end
 
 			for Index, Property in pairs(NewClass) do
 				if Index ~= "Inherits" then
-					List[Property] = Property
+					if Override ~= nil then
+						if Property == Override then
+							List[Property] = Property
+						end
+					else
+						List[Property] = Property
+					end
 				end
 			end
 		end
 		
 		for Index, Property in pairs(Class) do
 			if Index ~= "Inherits" then
-				List[Property] = Property
+				if Override ~= nil then
+					if Property == Override then
+						List[Property] = Property
+					end
+				else
+					List[Property] = Property
+				end
 			end
 		end
 
@@ -1683,14 +1701,26 @@ local GetProperties; GetProperties = function(ClassName) --// Recursively Sets a
 			
 			for Index, Property in pairs(Props) do
 				if Index ~= "Inherits" then
-					Properties[Property] = Property
+					if Override ~= nil then
+						if Property == Override then
+							List[Property] = Property
+						end
+					else
+						List[Property] = Property
+					end
 				end
 			end
 		end
 
 		for Index, Property in pairs(Class) do
 			if Index ~= "Inherits" then
-				Properties[Property] = Property
+				if Override ~= nil then
+					if Property == Override then
+						List[Property] = Property
+					end
+				else
+					List[Property] = Property
+				end
 			end
 		end
 	else
@@ -1702,8 +1732,8 @@ local GetProperties; GetProperties = function(ClassName) --// Recursively Sets a
 	return Properties
 end
 
-local Save = function(TargetInstance) --// Main call for Save
-	local Properties = GetProperties(TargetInstance.ClassName)
+local Save = function(TargetInstance, Override) --// Main call for Save
+	local Properties = GetProperties(TargetInstance.ClassName, Override)
 
 	--// Save the values of the properties 
 	for Index, N_A in pairs(Properties) do
