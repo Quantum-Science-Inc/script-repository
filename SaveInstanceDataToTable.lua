@@ -1043,7 +1043,7 @@ local Classes = {
 	    "LeftSurfaceInput";
 	    "Locked";
 	    "Material";
-	    --"Orientation";
+	    "Orientation";
 	    "Position";
 	    "Reflectance";
 	    "RightParamA";
