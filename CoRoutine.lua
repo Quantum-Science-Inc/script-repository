@@ -6,17 +6,17 @@
 
 local Routines = {}
 
+local RandomID = function()
+    local String = ""
+
+    for I=1, Random.new(tick()):NextInteger(5, 25) do
+        String = String .. string.char(Random.new(tick()+math.random(math.random(80, 1000), math.random(5, 25))):NextInteger(097, 122)) --// LOL
+    end
+
+    return String
+end;
+
 return {
-    RandomID = function()
-        local String = ""
-
-        for I=1, Random.new(tick()):NextInteger(5, 25) do
-            String = String .. string.char(Random.new(tick()+math.random(math.random(80, 1000), math.random(5, 25))):NextInteger(097, 122)) --// LOL
-        end
-
-        return String
-    end;
-
     Wrap = function(Function, ...)
         local Args = {...}
 
