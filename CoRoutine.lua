@@ -47,7 +47,7 @@ return {
             coroutine.yield(Routine)
             Routines[Index] = nil --// GC help pls
         end
-        
+
         return "CLEARED"
     end;
 
@@ -77,6 +77,7 @@ return {
     Yield = function(ID)
         if Routines[ID] ~= nil then
             coroutine.yield(Routines[ID])
+            Routines[ID] = nil
 
             return "YIELD"
         end
