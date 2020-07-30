@@ -17,7 +17,7 @@ return {
         return String
     end;
 
-    MakeRoutine = function(Function, ...)
+    Wrap = function(Function, ...)
         local Args = {...}
 
         local RunFunction = function()
