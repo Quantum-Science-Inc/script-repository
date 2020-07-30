@@ -38,6 +38,8 @@ return {
         end)
 
         coroutine.resume(Routines[ID])
+
+        return {ID = ID; Routine = Routines[ID]}
     end;
 
     Clear = function()
@@ -45,5 +47,40 @@ return {
             coroutine.yield(Routine)
             Routines[Index] = nil --// GC help pls
         end
+        
+        return "CLEARED"
+    end;
+
+    Create = function(Function, ...)
+        local Args = {...}
+
+        local RunFunction = function()
+            local Args = Args
+            local Function = Function
+
+            Function(unpack(Args))
+        end
+
+        local ID = RandomID()
+
+        Routines[ID] = coroutine.create(function() 
+            local Ran, Error = pcall(RunFunction)
+
+            if Error then
+                warn("Got error running Function ID: ".. tostring(ID) .." Error;\n".. tostring(Error))
+            end
+        end)
+
+        return {ID = ID; Routine = Routines[ID]}
+    end;
+
+    Yield = function(ID)
+        if Routines[ID] ~= nil then
+            coroutine.yield(Routines[ID])
+
+            return "YIELD"
+        end
+
+        return "NIL"
     end;
 }
