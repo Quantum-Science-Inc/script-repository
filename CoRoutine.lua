@@ -17,7 +17,7 @@ local MakeRoutine = function(Function, ...)
         local Args = Args
         local Function = Function
 
-        Function(unpack({...}))
+        Function(unpack(Args))
     end
 
     local ID = RandomID()
