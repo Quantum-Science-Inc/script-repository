@@ -22,6 +22,7 @@ local Wrap = function(Function) --// Function that prevents spam for global cont
         end
 
         if AntiSpam[Player] < 5 then
+            AntiSpam[Player] = AntiSpam[Player] + 1
             Function(Player)
         elseif AntiSpam[Player] > 5 and DelayQueue[Player] == false then
             Delay(Player)
